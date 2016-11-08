@@ -14,13 +14,15 @@
       (recur (dec n) (not acc)))))
 
 (defn recursive-reverse [coll]
-  (loop [result '()]
-    (if (empty? coll)
+  (loop [result '()
+         c coll]
+    (if (empty? c)
       result
-      (recur (conj result (first)))))
+      (recur (conj result (first c)) (rest c)))))
 
 (defn factorial [n]
-  __)
+  (reduce *' (range 1 (inc n))))
+;; http://stackoverflow.com/questions/33619506/clojure-koan-factorial-function-implementations/33620152
 
 (meditations
   "Recursion ends with a base case"
